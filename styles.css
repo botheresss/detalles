@@ -1,0 +1,340 @@
+:root {
+    --colorBordeCard : #7B4A12;
+    --colorSombra : white;
+    --colorSombraHover : #e4c7b8;
+    --colorFuenteProducto: white;
+    --columna: 3;
+}
+
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+
+
+body {
+  background-image: url('images/fondoGeneral.webp');
+  background-repeat: repeat-y; 
+  background-size: cover;      
+  background-position: center;
+}
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.logo {
+    background-image: url('images/logotran.png');
+    background-size: cover;
+    height: 300px;
+    width: 300px;
+}
+
+.caveat {
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+}
+.contenedorDesc {
+    display: flex;
+    flex-direction: column;
+}
+.descripcion1 {
+    font-size: 70px;
+    text-align: center;
+}
+.descripcion2 {
+    font-size: 45px;
+    text-align: center;
+}
+.contenedorBotones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn-outline-brown {
+    color: #7B4A12;                
+    border-color: #7B4A12;         
+}
+
+.btn-outline-brown:hover {
+    background-color: #7B4A12;     
+    color: white;                  
+}
+
+.contenedorProductos {
+    display: grid;
+    gap: 20px;
+    margin: 30px;
+    align-items : center;
+    justify-items: center;
+    justify-content: center;
+    align-content: start;
+    grid-template-columns : repeat(var(--columna), 1fr);
+}
+.card {
+    border: 0.125rem solid var(--colorBordeCard);
+    border-radius: 17px;
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    width: 350px;
+    box-shadow: 0px 6px 12px var(--colorSombra);
+}
+.card p {
+    font-size: 23px;
+    text-align: center;
+}
+.card:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 6px 12px var(--colorSombraHover);
+    cursor: pointer;
+}
+.card:hover p {
+    text-decoration: underline;
+}
+
+/*imagenes*/
+.img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  color: var(--colorFuenteProducto);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.imgPopup {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.contenedor-imagen-popup {
+  border: 0.125rem solid rgb(243, 197, 204);
+  border-radius: 15px;
+  width: 100%;
+  height: 250px; 
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+#popup-imagen {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+.imagen1 {
+  background-image: url('images/Productos/damas/Detalle2.jpeg');
+}
+.imagen2 {
+  background-image: url('images/Productos/damas/Detalle3.jpeg');
+}
+.imagen3 {
+  background-image: url('images/Productos/damas/Detalle4.jpeg');
+}
+.imagen4 {
+  background-image: url('images/Productos/damas/Detalle5.jpeg');
+}
+.imagen5 {
+  background-image: url('images/Productos/damas/Detalle6.jpeg');
+}
+.imagen6 {
+  background-image: url('images/Productos/damas/Detalle8.jpeg');
+}
+.imagen7 {
+  background-image: url('images/Productos/damas/Detalle9.jpeg');
+}
+.imagen8 {
+  background-image: url('images/Productos/damas/Detalle10.jpeg');
+}
+.imagen9 {
+  background-image: url('images/Productos/damas/Detalle11.jpeg');
+}
+.imagen10 {
+  background-image: url('images/Productos/caballeros/Detalle1.jpeg');
+}
+.imagen11 {
+  background-image: url('images/Productos/caballeros/Detalle2.jpeg');
+}
+.imagen12 {
+  background-image: url('images/Productos/caballeros/Detalle3.jpeg');
+}
+.imagen13 {
+  background-image: url('images/Productos/caballeros/Detalle4.jpeg');
+}
+.imagen14 {
+  background-image: url('images/Productos/generales/Detale1.1.jpeg');
+}
+.imagen15 {
+  background-image: url('images/Productos/generales/Detalle2.jpeg');
+}
+.imagen16 {
+  background-image: url('images/Productos/generales/Detalle3.jpeg');
+}
+
+
+/*pop up*/
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(8px); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.popup {
+  background: #7B4A12;
+  color: white;
+  font-size: 25px;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  animation: aparecer 0.3s ease;
+}
+
+.popup img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.popup .cerrar {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Animación */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/*responsive*/
+@media (max-width: 550px) {
+    :root{
+        --columna: 1;
+    }
+    .descripcion1 {
+        font-size: 45px;
+    }
+    .descripcion2 {
+        font-size: 30px;
+    }
+    header{
+        flex-direction: column;
+    }
+}
+@media (min-width: 550px) and (max-width: 1100px){
+    :root{
+        --columna: 2;
+    }
+    header{
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 1470px) {
+    :root{
+        --columna: 4;
+    }
+}
+
+
+
+
+
+
+
+
+.footer {
+  background-color: #7B4A12;
+  color: #f5f5f5;
+  padding: 40px 20px 10px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-contenido {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.footer-descripcion {
+  font-size: 0.95em;
+  color: #f0e6d2;
+  margin-bottom: 25px;
+}
+
+.footer-redes {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-icono {
+  color: #f5f5f5;
+  font-size: 1.4em;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer-icono:hover {
+  color: #ffe0b2;
+  transform: scale(1.2);
+}
+
+.footer-copy {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 30px;
+  padding-top: 10px;
+  font-size: 0.85em;
+  color: #f0e6d2;
+}
+
