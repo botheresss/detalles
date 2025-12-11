@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require("path");
+
 
 dotenv.config();
 
@@ -12,11 +14,20 @@ const mongoURI = process.env.MONGODB_URI;
 app.use(cors());
 app.use(express.json());
 
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
+
+app.get('/', (req, res) => {
+  res.send("Backend funcionando");
+});
+
+
 const productoRoutes = require('./routes/producto.routes.js');
-app.use('/api', productoRoutes);
+app.use('/api/productos', productoRoutes);
 
 const userRoutes = require('./routes/user.routes.js');
-app.use('/api', userRoutes);
+app.use('/api/usuarios', userRoutes);
 
 async function start(){
     try{

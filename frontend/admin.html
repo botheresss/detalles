@@ -162,7 +162,7 @@
     <p class="subtitle">Crear o editar un producto de tu tienda de detalles.</p>
 
     <form id="productForm">
-      <!-- IMAGEN (URL) -->
+      
       <div class="field">
         <label for="imagen">Imagen (URL)</label>
         <input
@@ -177,7 +177,7 @@
         </div>
       </div>
 
-      <!-- NOMBRE -->
+      
       <div class="field">
         <label for="nombre">Nombre</label>
         <input
@@ -189,7 +189,7 @@
         />
       </div>
 
-      <!-- DESCRIPCIÓN -->
+      
       <div class="field">
         <label for="descripcion">Descripción</label>
         <textarea
@@ -199,7 +199,7 @@
         ></textarea>
       </div>
 
-      <!-- PRECIO -->
+      
       <div class="field">
         <label for="precio">Precio</label>
         <input
@@ -219,54 +219,91 @@
     </form>
   </div>
 
-  <script>
-    // Vista previa de la imagen cuando escribes la URL
-    const imagenInput = document.getElementById('imagen');
-    const imagePreview = document.getElementById('imagePreview');
-    const previewImg = document.getElementById('previewImg');
+<script>
+  const token = localStorage.getItem('token');
+  const userData = localStorage.getItem("user");
 
-    imagenInput.addEventListener('input', () => {
+  if (!token || !userData) {
+      window.location.href = "login.html";
+  }
+
+  try {
+      const user = JSON.parse(userData);
+
+      if (user.rol !== "admin") {
+          alert("No tienes permiso para acceder a esta sección.");
+          window.location.href = "index.html"; 
+      }
+
+  } catch (err) {
+      console.error("Error verificando usuario:", err);
+      window.location.href = "login.html";
+  }
+
+
+  
+  const imagenInput = document.getElementById('imagen');
+  const imagePreview = document.getElementById('imagePreview');
+  const previewImg = document.getElementById('previewImg');
+
+  imagenInput.addEventListener('input', () => {
       const url = imagenInput.value.trim();
       if (!url) {
-        imagePreview.style.display = 'none';
-        previewImg.src = '';
-        return;
+          imagePreview.style.display = 'none';
+          previewImg.src = '';
+          return;
       }
       previewImg.src = url;
       imagePreview.style.display = 'flex';
-    });
+  });
 
-    // Manejo del envío del formulario (ejemplo: enviar a tu API)
-    const productForm = document.getElementById('productForm');
-    const formMessage = document.getElementById('formMessage');
 
-    productForm.addEventListener('submit', async (e) => {
+  
+  const productForm = document.getElementById('productForm');
+  const formMessage = document.getElementById('formMessage');
+
+  productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const data = {
-        imagen: imagenInput.value.trim(),
-        nombre: document.getElementById('nombre').value.trim(),
-        descripcion: document.getElementById('descripcion').value.trim(),
-        precio: Number(document.getElementById('precio').value),
+          imagen: imagenInput.value.trim(),
+          nombre: document.getElementById('nombre').value.trim(),
+          descripcion: document.getElementById('descripcion').value.trim(),
+          precio: Number(document.getElementById('precio').value),
       };
 
       try {
-        // Aquí apuntas al endpoint de tu backend, por ejemplo:
-        // const response = await fetch('http://localhost:3000/detalles', { ... })
-        // De momento solo mostramos el JSON en consola y un mensaje bonito.
-        console.log('Producto a enviar:', data);
+          const res = await fetch("http://localhost:3000/api/productos", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${token}`  
+              },
+              body: JSON.stringify(data)
+          });
 
-        formMessage.textContent = 'Producto listo para enviar (revisa la consola).';
-        formMessage.className = 'message success';
+          const responseData = await res.json();
 
-        // Si quieres limpiar el form después:
-        // productForm.reset();
-        // imagePreview.style.display = 'none';
+          if (!res.ok) {
+              formMessage.textContent = responseData.msg || "Error al guardar el producto.";
+              formMessage.className = "message error";
+              return;
+          }
+
+          formMessage.textContent = "Producto guardado con éxito.";
+          formMessage.className = "message success";
+
+         
+          productForm.reset();
+          imagePreview.style.display = 'none';
+
       } catch (error) {
-        formMessage.textContent = 'Ocurrió un error al guardar el producto.';
-        formMessage.className = 'message error';
+          console.error(error);
+          formMessage.textContent = "Ocurrió un error al enviar el producto.";
+          formMessage.className = "message error";
       }
-    });
-  </script>
+  });
+</script>
+
 </body>
 </html>

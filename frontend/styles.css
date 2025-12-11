@@ -12,7 +12,7 @@
 
 
 body {
-  background-image: url('images/fondoGeneral.webp');
+  background-image: url('../backend/images/fondoGeneral.webp');
   background-repeat: repeat-y; 
   background-size: cover;      
   background-position: center;
@@ -24,7 +24,7 @@ header {
     justify-content: center;
 }
 .logo {
-    background-image: url('images/logotran.png');
+    background-image: url('../backend/images/logotran.png');
     background-size: cover;
     height: 300px;
     width: 300px;
@@ -66,7 +66,7 @@ header {
 
 .contenedorProductos {
     display: grid;
-    gap: 20px;
+    gap: 40px;
     margin: 30px;
     align-items : center;
     justify-items: center;
@@ -138,55 +138,6 @@ header {
 }
 
 
-
-.imagen1 {
-  background-image: url('images/Productos/damas/Detalle2.jpeg');
-}
-.imagen2 {
-  background-image: url('images/Productos/damas/Detalle3.jpeg');
-}
-.imagen3 {
-  background-image: url('images/Productos/damas/Detalle4.jpeg');
-}
-.imagen4 {
-  background-image: url('images/Productos/damas/Detalle5.jpeg');
-}
-.imagen5 {
-  background-image: url('images/Productos/damas/Detalle6.jpeg');
-}
-.imagen6 {
-  background-image: url('images/Productos/damas/Detalle8.jpeg');
-}
-.imagen7 {
-  background-image: url('images/Productos/damas/Detalle9.jpeg');
-}
-.imagen8 {
-  background-image: url('images/Productos/damas/Detalle10.jpeg');
-}
-.imagen9 {
-  background-image: url('images/Productos/damas/Detalle11.jpeg');
-}
-.imagen10 {
-  background-image: url('images/Productos/caballeros/Detalle1.jpeg');
-}
-.imagen11 {
-  background-image: url('images/Productos/caballeros/Detalle2.jpeg');
-}
-.imagen12 {
-  background-image: url('images/Productos/caballeros/Detalle3.jpeg');
-}
-.imagen13 {
-  background-image: url('images/Productos/caballeros/Detalle4.jpeg');
-}
-.imagen14 {
-  background-image: url('images/Productos/generales/Detale1.1.jpeg');
-}
-.imagen15 {
-  background-image: url('images/Productos/generales/Detalle2.jpeg');
-}
-.imagen16 {
-  background-image: url('images/Productos/generales/Detalle3.jpeg');
-}
 
 
 /*pop up*/
@@ -338,3 +289,9 @@ header {
   color: #f0e6d2;
 }
 
+.imgProducto {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
