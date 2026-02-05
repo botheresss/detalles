@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <title>Admin - Gestión de Productos</title>
@@ -13,7 +14,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: #f4f4f4;
+      background: #e4c7b8;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -156,61 +157,39 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>Admin de Productos</h1>
     <p class="subtitle">Crear o editar un producto de tu tienda de detalles.</p>
 
     <form id="productForm">
-      
+
       <div class="field">
         <label for="imagen">Imagen (URL)</label>
-        <input
-          type="text"
-          id="imagen"
-          name="imagen"
-          placeholder="https://ejemplo.com/imagen.jpg"
-          required
-        />
+        <input type="text" id="imagen" name="imagen" placeholder="https://ejemplo.com/imagen.jpg" required />
         <div class="image-preview" id="imagePreview">
           <img id="previewImg" alt="Vista previa de la imagen" />
         </div>
       </div>
 
-      
+
       <div class="field">
         <label for="nombre">Nombre</label>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          placeholder="Ej: Caja de chocolates"
-          required
-        />
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Caja de chocolates" required />
       </div>
 
-      
+
       <div class="field">
         <label for="descripcion">Descripción</label>
-        <textarea
-          id="descripcion"
-          name="descripcion"
-          placeholder="Describe el producto, materiales, ocasión, etc."
-        ></textarea>
+        <textarea id="descripcion" name="descripcion"
+          placeholder="Describe el producto, materiales, ocasión, etc."></textarea>
       </div>
 
-      
+
       <div class="field">
         <label for="precio">Precio</label>
-        <input
-          type="number"
-          id="precio"
-          name="precio"
-          placeholder="45000"
-          min="0"
-          step="100"
-          required
-        />
+        <input type="number" id="precio" name="precio" placeholder="45000" min="0" step="100" required />
       </div>
 
       <button type="submit" class="btn btn-primary">Guardar producto</button>
@@ -219,91 +198,92 @@
     </form>
   </div>
 
-<script>
-  const token = localStorage.getItem('token');
-  const userData = localStorage.getItem("user");
+  <script>
+    const token = localStorage.getItem('token');
+    const userData = localStorage.getItem("user");
 
-  if (!token || !userData) {
+    if (!token || !userData) {
       window.location.href = "login.html";
-  }
+    }
 
-  try {
+    try {
       const user = JSON.parse(userData);
 
       if (user.rol !== "admin") {
-          alert("No tienes permiso para acceder a esta sección.");
-          window.location.href = "index.html"; 
+        alert("No tienes permiso para acceder a esta sección.");
+        window.location.href = "index.html";
       }
 
-  } catch (err) {
+    } catch (err) {
       console.error("Error verificando usuario:", err);
       window.location.href = "login.html";
-  }
+    }
 
 
-  
-  const imagenInput = document.getElementById('imagen');
-  const imagePreview = document.getElementById('imagePreview');
-  const previewImg = document.getElementById('previewImg');
 
-  imagenInput.addEventListener('input', () => {
+    const imagenInput = document.getElementById('imagen');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = document.getElementById('previewImg');
+
+    imagenInput.addEventListener('input', () => {
       const url = imagenInput.value.trim();
       if (!url) {
-          imagePreview.style.display = 'none';
-          previewImg.src = '';
-          return;
+        imagePreview.style.display = 'none';
+        previewImg.src = '';
+        return;
       }
       previewImg.src = url;
       imagePreview.style.display = 'flex';
-  });
+    });
 
 
-  
-  const productForm = document.getElementById('productForm');
-  const formMessage = document.getElementById('formMessage');
 
-  productForm.addEventListener('submit', async (e) => {
+    const productForm = document.getElementById('productForm');
+    const formMessage = document.getElementById('formMessage');
+
+    productForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const data = {
-          imagen: imagenInput.value.trim(),
-          nombre: document.getElementById('nombre').value.trim(),
-          descripcion: document.getElementById('descripcion').value.trim(),
-          precio: Number(document.getElementById('precio').value),
+        imagen: imagenInput.value.trim(),
+        nombre: document.getElementById('nombre').value.trim(),
+        descripcion: document.getElementById('descripcion').value.trim(),
+        precio: Number(document.getElementById('precio').value),
       };
 
       try {
-          const res = await fetch("http://localhost:3000/api/productos", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": `Bearer ${token}`  
-              },
-              body: JSON.stringify(data)
-          });
+        const res = await fetch("http://localhost:3000/api/productos", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(data)
+        });
 
-          const responseData = await res.json();
+        const responseData = await res.json();
 
-          if (!res.ok) {
-              formMessage.textContent = responseData.msg || "Error al guardar el producto.";
-              formMessage.className = "message error";
-              return;
-          }
+        if (!res.ok) {
+          formMessage.textContent = responseData.msg || "Error al guardar el producto.";
+          formMessage.className = "message error";
+          return;
+        }
 
-          formMessage.textContent = "Producto guardado con éxito.";
-          formMessage.className = "message success";
+        formMessage.textContent = "Producto guardado con éxito.";
+        formMessage.className = "message success";
 
-         
-          productForm.reset();
-          imagePreview.style.display = 'none';
+
+        productForm.reset();
+        imagePreview.style.display = 'none';
 
       } catch (error) {
-          console.error(error);
-          formMessage.textContent = "Ocurrió un error al enviar el producto.";
-          formMessage.className = "message error";
+        console.error(error);
+        formMessage.textContent = "Ocurrió un error al enviar el producto.";
+        formMessage.className = "message error";
       }
-  });
-</script>
+    });
+  </script>
 
 </body>
+
 </html>

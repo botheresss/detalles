@@ -1,0 +1,76 @@
+.card {
+  background: #0f0703;
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.titulo {
+  color: #f1d4a5;
+  font-size: 20px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  min-height: 2.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.btn-ver {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #2c1c12;
+  color: #e6c99c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-ver:hover {
+  background: #4a2f1e;
+}
+
+.admin-botones {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.btn-editar,
+.btn-eliminar {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-editar {
+  background: #ffc107;
+}
+
+.btn-eliminar {
+  background: #dc3545;
+  color: white;
+}

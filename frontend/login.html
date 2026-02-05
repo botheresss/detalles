@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +21,7 @@
             padding: 30px;
             width: 320px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -93,7 +94,7 @@
             }
 
             try {
-                const res = await fetch("http://localhost:3000/api/auth/login", {
+                const res = await fetch("http://localhost:3000/api/usuarios/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
@@ -102,19 +103,23 @@
                 const data = await res.json();
 
                 if (!res.ok) {
-                    msg.textContent = data.msg || "Credenciales incorrectas";
+                    msg.textContent = data.msg || data.message || "Credenciales incorrectas";
                     msg.classList = "error";
                     return;
                 }
 
-                
-                localStorage.setItem("token", data.accessToken);
-                localStorage.setItem("user", JSON.stringify(data.user));
+                // Guardar token y datos del usuario (adaptado a la respuesta del backend)
+                localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify({
+                    nombre: data.nombre,
+                    email: data.email,
+                    rol: data.rol
+                }));
 
                 msg.textContent = "Login exitoso";
                 msg.classList = "success";
 
-                
+
                 setTimeout(() => {
                     window.location.href = "admin.html";
                 }, 800);
@@ -126,4 +131,5 @@
         }
     </script>
 </body>
+
 </html>

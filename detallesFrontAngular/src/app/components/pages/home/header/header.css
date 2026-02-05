@@ -1,0 +1,214 @@
+/* ===== HEADER GENERAL ===== */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* ===== BARRA SUPERIOR AZUL ===== */
+
+.navbar-top {
+    background-color: #1fa2d6;
+    color: white;
+    font-size: 18px;
+    padding: 6px 20px;
+    width: 100%;
+}
+
+/* ===== BARRA PRINCIPAL ===== */
+
+.navbar-main {
+    background-color: #7B4A12;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    width: 100%;
+    gap: 20px;
+    position: relative;
+}
+
+/* ===== LOGO ===== */
+
+.logo {
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+}
+
+/* ===== SALUDO / LOGIN ===== */
+
+.saludo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    color: white;
+}
+
+.btn-login,
+.btn-logout,
+.btn-crear {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-login,
+.btn-logout {
+    background: #2c1c12;
+    color: #e6c99c;
+}
+
+.btn-login:hover,
+.btn-logout:hover {
+    background: #4a2f1e;
+}
+
+.btn-crear {
+    background: #37ad13;
+    color: white;
+}
+
+.btn-crear:hover {
+    background: #658547;
+}
+
+/* ===== DROPDOWN CATEGORÍAS ===== */
+
+.filtro-categorias {
+    position: relative;
+}
+
+.btn-filtro {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    background: #e6c99c;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    right: 100px;
+}
+
+.menu-categorias {
+    position: absolute;
+    top: 110%;
+    right: 100px;
+    background: #2b0f05;
+    border-radius: 12px;
+    padding: 8px;
+    display: none;
+    min-width: 160px;
+    z-index: 1000;
+}
+
+.filtro-categorias:hover .menu-categorias {
+    display: block;
+}
+
+.menu-categorias div {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #f5d6b5;
+}
+
+.menu-categorias div:hover {
+    background: #4a1c0d;
+}
+
+/* ===== BARRA INFERIOR ===== */
+
+.nav-bottom {
+    background: #d2b6a0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+}
+
+/* ===== LINKS ===== */
+
+.nav-links {
+    display: flex;
+    gap: 60px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ===== BUSCADOR + ICONOS ===== */
+
+.nav-icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-icons input {
+    border-radius: 20px;
+    padding: 5px 12px;
+    width: 200px;
+    height: 40px;
+    border: none;
+}
+
+.nav-icons input:focus {
+    outline: none;
+}
+
+/* ===== ICONOS ===== */
+
+.lupa,
+.carrito {
+    height: 50px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.lupa:hover,
+.carrito:hover {
+    transform: scale(1.2);
+}
+
+/* ===== TOTAL CARRITO ===== */
+
+.carrito-cantidad {
+    background: #ff0000;
+    color: white;
+    border-radius: 50px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@keyframes carrito-pop {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.35);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.carrito.animar {
+    animation: carrito-pop 0.35s ease;
+}

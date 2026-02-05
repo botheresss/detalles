@@ -1,0 +1,17 @@
+<div class="overlay" (click)="cerrar()"></div>
+
+<div class="popup">
+
+    <h2>Carrito</h2>
+
+    <div *ngFor="let p of productos()" class="item">
+        <img class="imagen" [src]="p.imagen" />
+        <p>{{ p.nombre }}</p>
+        <button class="btn-eliminar" (click)="eliminar(p)">Eliminar</button>
+    </div>
+
+    <div class="total">
+        Total: {{ total() | currency }}
+    </div>
+
+</div>

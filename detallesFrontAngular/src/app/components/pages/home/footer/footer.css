@@ -1,0 +1,99 @@
+.footer {
+    background: #7B4A12;
+    color: #f5d6b5;
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 40px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 220px;
+}
+
+.footer h3 {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.pagos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pagos img {
+    height: 35px;
+    background: white;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.contacto-item {
+    background: #e6c99c;
+    color: #2b0f05;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #f5d6b5;
+    transition: 0.2s;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.insta {
+    background: #e1306c;
+}
+
+.facebook {
+    background: #1877f2;
+}
+
+.whatsapp {
+    background: #25d366;
+}
+
+
+/* botón flotante whatsapp */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    border-radius: 50%;
+    padding: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.whatsapp-float img {
+    height: 28px;
+}
+
+
+.imagen-pagos {
+    height: 250px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 6px;
+}

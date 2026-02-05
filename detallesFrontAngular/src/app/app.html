@@ -1,0 +1,4 @@
+<router-outlet></router-outlet>
+
+<app-carrito class="overlay" *ngIf="cart.carritoAbierto()" (cerrarCarrito)="cart.cerrar()">
+</app-carrito>

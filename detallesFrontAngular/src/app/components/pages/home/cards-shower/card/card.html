@@ -1,0 +1,21 @@
+<div class="card">
+
+  <img [src]="producto.imagen" [alt]="producto.nombre" />
+
+
+  <p class="titulo">
+    {{ producto.nombre }}
+  </p>
+
+  <button class="btn-ver" (click)="verMas()">
+    Ver más
+  </button>
+
+  <div class="admin-botones" *ngIf="esAdmin">
+    <button class="btn-editar" (click)="editarProducto()">Editar</button>
+    <button class="btn-eliminar" (click)="eliminar.emit(producto)">Eliminar</button>
+  </div>
+
+
+
+</div>

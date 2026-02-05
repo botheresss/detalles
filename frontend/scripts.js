@@ -1,14 +1,12 @@
-
-
-
-
 const contenedor = document.querySelector(".contenedorProductos");
 
 async function cargarProductos() {
     try {
         const res = await fetch("http://localhost:3000/api/productos");
         const productos = await res.json();
+        console.time('render-js');
         mostrarProductos(productos);
+        console.timeEnd('render-js');
         configurarBotones(productos);
     } catch (err) {
         console.error("Error cargando productos:", err);
@@ -24,7 +22,7 @@ function mostrarProductos(lista) {
 
         const img = document.createElement("img");
         img.classList.add("imgProducto");
-        img.src = "http://localhost:3000" + producto.imagen;
+        img.src = "http://localhost:4200" + producto.imagen;
         img.alt = producto.nombre;
 
         const texto = document.createElement("p");
@@ -46,10 +44,10 @@ function abrirPopup(producto) {
     const descripcion = document.getElementById("popup-descripcion");
     const precio = document.getElementById("popup-precio");
 
-    imagen.innerHTML = ""; 
+    imagen.innerHTML = "";
 
     const img = document.createElement("img");
-    img.src = "http://localhost:3000" + producto.imagen;
+    img.src = "http://localhost:4200" + producto.imagen;
     img.alt = producto.nombre;
     img.classList.add("imgPopupReal");
 

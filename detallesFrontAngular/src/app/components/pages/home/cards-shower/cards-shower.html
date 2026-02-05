@@ -1,0 +1,69 @@
+<div class="cards-wrapper">
+
+    <div class="cards-container" #cardsContainer>
+        <app-card *ngFor="let p of productos()" [producto]="p" [esAdmin]="auth.esAdmin()" (ver)="abrirPopup($event)"
+            (eliminar)="eliminarProducto($event)" (editar)="abrirEdicion($event)">
+        </app-card>
+    </div>
+
+</div>
+
+
+<div class="popup-overlay" *ngIf="popupAbierto" (click)="cerrarPopup()">
+
+    <div class="popup" (click)="$event.stopPropagation()">
+
+        <span class="cerrar" (click)="cerrarPopup()">✕</span>
+
+        <div class="contenedor-imagen-popup">
+            <img [src]="productoSeleccionado?.imagen" [alt]="productoSeleccionado?.nombre" />
+        </div>
+
+        <h2>{{ productoSeleccionado?.nombre }}</h2>
+        <p>{{ productoSeleccionado?.descripcion }}</p>
+        <p><strong>${{ productoSeleccionado?.precio }}</strong></p>
+        <button class="btn-agregar" (click)="agregarAlCarrito()">
+            Agregar al carrito
+        </button>
+
+
+    </div>
+
+</div>
+
+<div class="popup-overlay" *ngIf="editando" (click)="cerrarEdicion()">
+
+    <div class="popup grande" (click)="$event.stopPropagation()">
+
+        <span class="cerrar" (click)="cerrarEdicion()">✕</span>
+
+        <h2>
+            {{ modoCrear ? 'Crear producto' : 'Editar producto' }}
+        </h2>
+
+        <form (ngSubmit)="guardarEdicion()">
+
+            <label>Imagen URL</label>
+            <input [(ngModel)]="productoEditando!.imagen" name="imagen" />
+
+            <label>Nombre</label>
+            <input [(ngModel)]="productoEditando!.nombre" name="nombre" />
+
+            <label>Descripción</label>
+            <textarea [(ngModel)]="productoEditando!.descripcion" name="descripcion"></textarea>
+
+            <label>Categoría</label>
+            <input [(ngModel)]="productoEditando!.categoria" name="categoria" />
+
+            <label>Precio</label>
+            <input type="number" [(ngModel)]="productoEditando!.precio" name="precio" />
+
+            <button type="submit">
+                {{ modoCrear ? 'Crear producto' : 'Guardar cambios' }}
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
