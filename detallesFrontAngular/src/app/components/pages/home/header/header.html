@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" [class.scrolled]="isScrolled">
 
     <div class="navbar-top">
         Productos express · Entregas en 24 hrs
@@ -11,23 +11,12 @@
             Login
         </button>
 
-        <div *ngIf="auth.isLogged()" class="saludo">
-            Bienvenido {{ auth.getUsuario()?.nombre }}
-            <button class="btn-logout" (click)="auth.logout()">Logout</button>
-            <button class="btn-crear" *ngIf="auth.esAdmin()" (click)="emitirCrearProducto()">
-                + Producto
-            </button>
-        </div>
-
-        <div class="filtro-categorias">
-            <button class="btn-filtro">
-                Categorías ▼
-            </button>
-
-            <div class="menu-categorias">
-                <div *ngFor="let c of productsService.categorias()" (click)="cambiarCategoria(c)">
-                    {{ c }}
-                </div>
+        <div *ngIf="auth.isLogged()" class="user-menu-container">
+            <div class="saludo">
+                Bienvenido {{ auth.getUsuario()?.nombre }}
+            </div>
+            <div class="botones-admin">
+                <button class="btn-logout" (click)="auth.logout()">Cerrar Sesión</button>
             </div>
         </div>
     </div>
@@ -46,10 +35,10 @@
 
 
         <div class="nav-icons">
-            <input type="text" [(ngModel)]="busqueda" (input)="buscar()" placeholder="Buscar...">
+            <input class="caveat" type="text" [(ngModel)]="busqueda" (input)="buscar()" placeholder="Buscar...">
             <img src="/assets/lupabuscador.png" alt="Lupa" class="lupa" (click)="buscar()">
 
-            <p class="carrito-cantidad">Total: ${{ cart.total() }}</p>
+            <p class="carrito-cantidad" (click)="cart.abrir()">Total: ${{ cart.total() }}</p>
             <img src="/assets/carrito.png" class="carrito" [class.animar]="animarCarrito()" (click)="cart.abrir()">
         </div>
 

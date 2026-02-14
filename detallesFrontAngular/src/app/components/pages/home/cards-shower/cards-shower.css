@@ -3,6 +3,54 @@
   padding: 20px;
 }
 
+/* ===== FILTRO CATEGORÍAS ===== */
+
+.filtro-categorias {
+  position: relative;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-filtro {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #e6c99c;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+.menu-categorias {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2b0f05;
+  border-radius: 12px;
+  padding: 8px;
+  display: none;
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.filtro-categorias:hover .menu-categorias {
+  display: block;
+}
+
+.menu-categorias div {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #f5d6b5;
+  font-size: 25px;
+}
+
+.menu-categorias div:hover {
+  background: #4a1c0d;
+}
+
 
 .cards-container {
   display: grid;
@@ -197,4 +245,54 @@
 
 .cards-wrapper::-webkit-scrollbar-thumb:hover {
   background: #c09d6831;
+}
+
+.btn-agregar-producto-card {
+  background: linear-gradient(135deg, #caa46a, #9b6c3f);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px dashed #f7e6d3;
+}
+
+.btn-agregar-producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #d4b177, #a57545);
+}
+
+.contenido-btn-agregar {
+  text-align: center;
+  color: white;
+}
+
+.icono-mas {
+  font-size: 80px;
+  font-weight: 300;
+  display: block;
+  line-height: 1;
+}
+
+.contenido-btn-agregar p {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .btn-agregar-producto-card {
+    min-height: 280px;
+  }
+
+  .icono-mas {
+    font-size: 60px;
+  }
+
+  .contenido-btn-agregar p {
+    font-size: 18px;
+  }
 }

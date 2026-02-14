@@ -1,9 +1,28 @@
 <div class="cards-wrapper">
 
+    <div class="filtro-categorias">
+        <button class="btn-filtro caveat">
+            Filtrar por categoría ▼
+        </button>
+
+        <div class="menu-categorias">
+            <div *ngFor="let c of productsService.categorias()" (click)="cambiarCategoria(c)">
+                {{ c }}
+            </div>
+        </div>
+    </div>
+
     <div class="cards-container" #cardsContainer>
         <app-card *ngFor="let p of productos()" [producto]="p" [esAdmin]="auth.esAdmin()" (ver)="abrirPopup($event)"
             (eliminar)="eliminarProducto($event)" (editar)="abrirEdicion($event)">
         </app-card>
+
+        <div *ngIf="auth.esAdmin()" class="btn-agregar-producto-card" (click)="abrirCrear()">
+            <div class="contenido-btn-agregar">
+                <span class="icono-mas">+</span>
+                <p>Agregar Producto</p>
+            </div>
+        </div>
     </div>
 
 </div>

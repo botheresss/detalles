@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, inject } from '@angular/core';
+import { Component, inject, HostListener, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../../../services/cart';
 import { Auth } from '../../../../services/auth';
@@ -22,27 +22,23 @@ export class Header {
   public productsService = inject(ProductsService);
   public viewport = inject(ViewportScroller);
 
+  isScrolled = false;
+
   constructor() { }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
 
   goLogin() {
     this.router.navigate(['/login']);
-  }
-
-  @Output() crearProducto = new EventEmitter<void>();
-
-  emitirCrearProducto() {
-    this.crearProducto.emit();
   }
 
   busqueda = '';
 
   buscar() {
     this.productsService.setBusqueda(this.busqueda);
-  }
-
-
-  cambiarCategoria(cat: string) {
-    this.productsService.filtrarPorCategoria(cat);
   }
 
   animarCarrito = this.cart.animacionCarrito;

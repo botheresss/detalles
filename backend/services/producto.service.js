@@ -1,22 +1,25 @@
 const Producto = require('../models/producto.model');
 
 const createProducto = async (data) => {
-    const { nombre, descripcion, precio, imagenNombre } = data;
+    const { nombre, descripcion, precio, imagen, categoria } = data;
 
     if (!nombre || !descripcion || !precio) {
         throw new Error('nombre, descripcion y precio son requeridos');
     }
 
     let imagenPath = null;
-    if (imagenNombre) {
-        imagenPath = `/frontend/images/${imagenNombre}`;
+    if (imagen) {
+        imagenPath = `/assets/${imagen}`;
     }
+
+
 
     const nuevoProducto = new Producto({
         nombre,
         descripcion,
         precio,
         imagen: imagenPath,
+        categoria
     });
 
     return await nuevoProducto.save();
@@ -32,7 +35,7 @@ const updateProducto = async (id, data) => {
     if (data.nombre !== undefined) producto.nombre = data.nombre;
     if (data.descripcion !== undefined) producto.descripcion = data.descripcion;
     if (data.precio !== undefined) producto.precio = data.precio;
-    if (data.imagenNombre !== undefined) producto.imagen = data.imagenNombre;
+    if (data.imagen !== undefined) producto.imagen = data.imagen;
     if (data.categoria !== undefined) producto.categoria = data.categoria;
 
     return await producto.save();

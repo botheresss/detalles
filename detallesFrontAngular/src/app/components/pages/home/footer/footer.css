@@ -97,3 +97,63 @@
     object-fit: cover;
     border-radius: 6px;
 }
+
+@media (max-width: 1024px) {
+    .footer {
+        padding: 40px 30px;
+        gap: 30px;
+    }
+
+    .footer-col {
+        min-width: 180px;
+        flex: 1 1 45%;
+    }
+
+    .imagen-pagos {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 20px;
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .footer-col {
+        min-width: 100%;
+        align-items: center;
+    }
+
+    .footer h3 {
+        font-size: 16px;
+    }
+
+    .pagos {
+        justify-content: center;
+    }
+
+    .pagos img {
+        height: 28px;
+    }
+
+    .imagen-pagos {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    .whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px;
+    }
+
+    .whatsapp-float img {
+        height: 24px;
+    }
+}

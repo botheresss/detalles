@@ -1,3 +1,8 @@
-<app-header id="inicio" (crearProducto)="cards.abrirCrear()"></app-header>
+<app-header></app-header>
+<br><br>
+<app-banner id="inicio"></app-banner>
+
+<app-carrito class="overlay" *ngIf="cart.carritoAbierto()" (cerrarCarrito)="cart.cerrar()">
+</app-carrito>
 <app-cards-shower id="tienda" #cards></app-cards-shower>
 <app-footer id="contacto"></app-footer>

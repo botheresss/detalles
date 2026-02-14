@@ -24,7 +24,7 @@ export class CardsShower {
   esAdmin = false;
 
   constructor(
-    private productsService: ProductsService,
+    public productsService: ProductsService,
     private cart: CartService,
     public auth: Auth,
     private router: Router
@@ -71,7 +71,8 @@ export class CardsShower {
 
 
   abrirEdicion(producto: Producto) {
-    this.productoEditando = { ...producto }; // copia segura
+    this.productoEditando = { ...producto };
+    this.modoCrear = false;
     this.editando = true;
   }
 
@@ -89,7 +90,7 @@ export class CardsShower {
 
       this.productsService.crearProducto(this.productoEditando)
         .subscribe(() => {
-          console.log('Producto creado');
+          console.log('Producto creado', this.productoEditando);
           this.productsService.cargarProductos();
           this.cerrarEdicion();
         });
@@ -98,7 +99,7 @@ export class CardsShower {
 
       this.productsService.actualizarProducto(this.productoEditando)
         .subscribe(() => {
-          console.log('Producto editado');
+          console.log('Producto editado', this.productoEditando);
           this.productsService.cargarProductos();
           this.cerrarEdicion();
         });
@@ -123,6 +124,10 @@ export class CardsShower {
   }
 
   modoCrear = false;
+
+  cambiarCategoria(cat: string) {
+    this.productsService.filtrarPorCategoria(cat);
+  }
 
 
   abrirCrearProducto() {

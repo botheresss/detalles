@@ -1,214 +1,402 @@
-/* ===== HEADER GENERAL ===== */
-
-.header {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-/* ===== BARRA SUPERIOR AZUL ===== */
-
-.navbar-top {
-    background-color: #1fa2d6;
-    color: white;
-    font-size: 18px;
-    padding: 6px 20px;
-    width: 100%;
-}
-
-/* ===== BARRA PRINCIPAL ===== */
-
-.navbar-main {
-    background-color: #7B4A12;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-    width: 100%;
-    gap: 20px;
-    position: relative;
-}
-
-/* ===== LOGO ===== */
-
-.logo {
-    height: 140px;
-    width: 140px;
-    object-fit: cover;
-}
-
-/* ===== SALUDO / LOGIN ===== */
-
-.saludo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 22px;
-    color: white;
-}
-
-.btn-login,
-.btn-logout,
-.btn-crear {
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.btn-login,
-.btn-logout {
-    background: #2c1c12;
-    color: #e6c99c;
-}
-
-.btn-login:hover,
-.btn-logout:hover {
-    background: #4a2f1e;
-}
-
-.btn-crear {
-    background: #37ad13;
-    color: white;
-}
-
-.btn-crear:hover {
-    background: #658547;
-}
-
-/* ===== DROPDOWN CATEGORÍAS ===== */
-
-.filtro-categorias {
-    position: relative;
-}
-
-.btn-filtro {
-    padding: 8px 14px;
-    border-radius: 10px;
-    border: none;
-    background: #e6c99c;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    right: 100px;
-}
-
-.menu-categorias {
-    position: absolute;
-    top: 110%;
-    right: 100px;
-    background: #2b0f05;
-    border-radius: 12px;
-    padding: 8px;
-    display: none;
-    min-width: 160px;
-    z-index: 1000;
-}
-
-.filtro-categorias:hover .menu-categorias {
-    display: block;
-}
-
-.menu-categorias div {
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 8px;
-    color: #f5d6b5;
-}
-
-.menu-categorias div:hover {
-    background: #4a1c0d;
-}
-
-/* ===== BARRA INFERIOR ===== */
-
-.nav-bottom {
-    background: #d2b6a0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 40px;
-}
-
-/* ===== LINKS ===== */
-
-.nav-links {
-    display: flex;
-    gap: 60px;
-}
-
-.nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
-    letter-spacing: 1px;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-/* ===== BUSCADOR + ICONOS ===== */
-
-.nav-icons {
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-.nav-icons input {
-    border-radius: 20px;
-    padding: 5px 12px;
-    width: 200px;
-    height: 40px;
-    border: none;
-}
-
-.nav-icons input:focus {
-    outline: none;
-}
-
-/* ===== ICONOS ===== */
-
-.lupa,
-.carrito {
-    height: 50px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.lupa:hover,
-.carrito:hover {
-    transform: scale(1.2);
-}
-
-/* ===== TOTAL CARRITO ===== */
-
-.carrito-cantidad {
-    background: #ff0000;
-    color: white;
-    border-radius: 50px;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: bold;
-}
-
-@keyframes carrito-pop {
-    0% {
-        transform: scale(1);
+    .header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
     }
 
-    40% {
-        transform: scale(1.35);
+
+
+    .navbar-top {
+        background-color: #1fa2d6;
+        color: white;
+        font-size: 18px;
+        padding: 6px 20px;
+        width: 100%;
+        transition: all 0.3s ease;
     }
 
-    100% {
-        transform: scale(1);
+    .header.scrolled .navbar-top {
+        padding: 3px 20px;
+        font-size: 14px;
     }
-}
 
-.carrito.animar {
-    animation: carrito-pop 0.35s ease;
-}
+
+
+    .navbar-main {
+        background-color: #7B4A12;
+        display: flex;
+        align-items: center;
+        padding: 10px 40px;
+        width: 100%;
+        gap: 20px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .header.scrolled .navbar-main {
+        padding: 5px 40px;
+    }
+
+
+
+    .logo {
+        height: 140px;
+        width: 140px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+
+    .header.scrolled .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+
+
+    .saludo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 22px;
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .saludo:hover {
+        cursor: pointer;
+    }
+
+    .header.scrolled .saludo {
+        font-size: 16px;
+    }
+
+    .btn-login,
+    .btn-logout,
+    .btn-crear {
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .btn-login,
+    .btn-logout {
+        background: #2c1c12;
+        color: #e6c99c;
+    }
+
+    .btn-login:hover,
+    .btn-logout:hover {
+        background: #4a2f1e;
+    }
+
+    .btn-crear {
+        background: #37ad13;
+        color: white;
+    }
+
+    .btn-crear:hover {
+        background: #658547;
+    }
+
+    /* ===== DROPDOWN MENU USUARIO ===== */
+
+    .user-menu-container {
+        position: relative;
+    }
+
+    .botones-admin {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        background: #2b0f05;
+        border-radius: 12px;
+        padding: 8px;
+        min-width: 180px;
+        z-index: 1000;
+        flex-direction: column;
+        gap: 8px;
+        display: none;
+    }
+
+    .user-menu-container:hover .botones-admin {
+        display: flex;
+    }
+
+
+
+
+
+    /* ===== BARRA INFERIOR ===== */
+
+    .nav-bottom {
+        background: #d2b6a0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 40px;
+    }
+
+    /* ===== LINKS ===== */
+
+    .nav-links {
+        display: flex;
+        gap: 60px;
+    }
+
+    .nav-links a {
+        color: rgb(53, 35, 24);
+        text-decoration: none;
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+
+    .nav-links a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    /* ===== BUSCADOR + ICONOS ===== */
+
+    .nav-icons {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .nav-icons input {
+        border-radius: 20px;
+        padding: 5px 12px;
+        width: 200px;
+        height: 40px;
+        border: none;
+    }
+
+    .nav-icons input:focus {
+        outline: none;
+    }
+
+    /* ===== ICONOS ===== */
+
+    .lupa,
+    .carrito {
+        height: 90px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .lupa:hover,
+    .carrito:hover {
+        transform: scale(1.2);
+    }
+
+    /* ===== TOTAL CARRITO ===== */
+
+    .carrito-cantidad {
+        background: #ff0000;
+        color: white;
+        border-radius: 50px;
+        padding: 5px 10px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .carrito-cantidad:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+    }
+
+    @keyframes carrito-pop {
+        0% {
+            transform: scale(1);
+        }
+
+        40% {
+            transform: scale(1.35);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .carrito.animar {
+        animation: carrito-pop 0.35s ease;
+    }
+
+    @media (max-width: 1024px) {
+        .navbar-main {
+            padding: 10px 30px;
+        }
+
+        .header.scrolled .navbar-main {
+            padding: 5px 30px;
+        }
+
+        .nav-bottom {
+            padding: 10px 30px;
+        }
+
+        .logo {
+            height: 100px;
+            width: 100px;
+        }
+
+        .header.scrolled .logo {
+            height: 60px;
+            width: 60px;
+        }
+
+        .nav-links {
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 20px;
+        }
+
+        .saludo {
+            font-size: 18px;
+        }
+
+        .header.scrolled .saludo {
+            font-size: 14px;
+        }
+
+        .nav-icons input {
+            width: 150px;
+        }
+
+        .lupa,
+        .carrito {
+            height: 70px;
+        }
+
+        .carrito-cantidad {
+            font-size: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar-top {
+            font-size: 14px;
+            padding: 5px 15px;
+            text-align: center;
+        }
+
+        .header.scrolled .navbar-top {
+            font-size: 12px;
+            padding: 3px 15px;
+        }
+
+        .navbar-main {
+            padding: 8px 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .header.scrolled .navbar-main {
+            padding: 5px 20px;
+        }
+
+        .logo {
+            height: 80px;
+            width: 80px;
+        }
+
+        .header.scrolled .logo {
+            height: 50px;
+            width: 50px;
+        }
+
+        .saludo {
+            font-size: 14px;
+            gap: 5px;
+        }
+
+        .header.scrolled .saludo {
+            font-size: 12px;
+        }
+
+        .btn-login,
+        .btn-logout,
+        .btn-crear {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .nav-bottom {
+            padding: 10px 20px;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-links {
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+        }
+
+        .nav-icons {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-icons input {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .lupa,
+        .carrito {
+            height: 50px;
+        }
+
+        .carrito-cantidad {
+            font-size: 16px;
+            padding: 3px 8px;
+        }
+
+        .botones-admin {
+            min-width: 140px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .navbar-top {
+            font-size: 12px;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+        }
+
+        .header.scrolled .logo {
+            height: 40px;
+            width: 40px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+        }
+
+        .saludo {
+            font-size: 12px;
+        }
+
+        .lupa,
+        .carrito {
+            height: 40px;
+        }
+    }
