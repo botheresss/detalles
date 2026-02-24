@@ -10,8 +10,10 @@
         <button class="btn-eliminar" (click)="eliminar(p)">Eliminar</button>
     </div>
 
-    <div class="total">
-        Total: {{ total() | currency }}
+    <div class="contenedor-total-pagar">
+        <div class="total">
+            Total: {{ total() | currency }}
+        </div>
+        <button class="btn-pagar">Pagar</button>
     </div>
-
 </div>

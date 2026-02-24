@@ -19,7 +19,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 app.get('/', (req, res) => {
-  res.send("Backend funcionando");
+    res.send("Backend funcionando");
 });
 
 
@@ -29,12 +29,12 @@ app.use('/api/productos', productoRoutes);
 const userRoutes = require('./routes/user.routes.js');
 app.use('/api/usuarios', userRoutes);
 
-async function start(){
-    try{
+async function start() {
+    try {
         await mongoose.connect(mongoURI);
-        console.log('conectado a MongoDB Atlas');
+        console.log('conectado a MongoDB');
         app.listen(PORT, () => console.log(`API lista en http://localhost:${PORT}`));
-    }catch(err){
+    } catch (err) {
         console.error('Error conectando a MongoDB:', err.message);
     }
 }

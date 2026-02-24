@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const Producto = require("./models/producto.model.js"); 
+const Producto = require("../models/producto.model")
 require("dotenv").config();
+
 
 const productos = [
   { nombre: "Elegante champaña con chocolates y rosas", categoria: "damas", imagen: "/images/Productos/damas/imagen1.webp", descripcion: "Un detalle de lujo...", precio: 95000 },

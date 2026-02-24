@@ -64,3 +64,29 @@
 .btn-eliminar:active {
     background: #4a2f1e;
 }
+
+.contenedor-total-pagar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-pagar {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #2c1c12;
+    color: #e6c99c;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-pagar:hover {
+    background: #4a2f1e;
+}
+
+.btn-pagar:active {
+    background: #4a2f1e;
+}

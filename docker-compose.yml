@@ -1,0 +1,35 @@
+services:
+  # SERVICIO 1: Base de Datos
+  mongo-db:
+    image: mongo:latest
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=secreto
+
+  # SERVICIO 2: Backend (API)
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo-db
+    environment:
+      - NODE_ENV=development
+
+  # SERVICIO 3: Frontend (Web)
+  frontend:
+    build: ./detallesFrontAngular
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+volumes:
+  mongo-data:

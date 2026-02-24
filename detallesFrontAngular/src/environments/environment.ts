@@ -1,5 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://mi-api-real.com/api'
+    apiUrl: 'http://localhost:8080/api'
 };
-
