@@ -11,7 +11,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoURI = process.env.MONGODB_URI;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        process.env.CORS_ORIGIN,        // URL del frontend (S3 o CloudFront)
+        'http://localhost:4200'          // Para desarrollo local
+    ].filter(Boolean),
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 

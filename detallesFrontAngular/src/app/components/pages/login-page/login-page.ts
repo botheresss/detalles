@@ -32,22 +32,26 @@ export class LoginPage {
       email: this.email,
       password: this.password
     })
-      .subscribe((respuesta: any) => {
+      .subscribe({
+        next: (respuesta: any) => {
+          console.log('Respuesta backend:', respuesta);
 
-        console.log('Respuesta backend:', respuesta);
+          const usuario = {
+            nombre: respuesta.nombre,
+            email: respuesta.email,
+            rol: respuesta.rol
+          };
 
-        const usuario = {
-          nombre: respuesta.nombre,
-          email: respuesta.email,
-          rol: respuesta.rol
-        };
+          const token = respuesta.token;
 
-        const token = respuesta.token;
+          this.auth.login(usuario, token);
 
-        this.auth.login(usuario, token);
-
-        this.router.navigate(['/']);
-
+          this.router.navigate(['/']);
+        },
+        error: (err) => {
+          console.error('Error en login:', err);
+          this.error = 'Credenciales incorrectas. Intenta de nuevo.';
+        }
       });
   }
 
