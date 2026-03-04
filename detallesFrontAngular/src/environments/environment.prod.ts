@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://13.220.21.12:3000/api'
+    apiUrl: 'https://durejfyd2ky5i.cloudfront.net/api'
 };

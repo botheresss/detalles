@@ -41,7 +41,7 @@ services:
             MONGODB_URI: mongodb://admin:secreto@mongo-db:27017/mi_db?authSource=admin
             JWT_SECRET: e3b0c44298fc1c149afbf4c8996fb92428291641e7344a7868fe3b0c44298fc1c149afbf4c8996fb924
             JWT_EXPIRES_IN: 3h
-            CORS_ORIGIN: http://un-toque-frontend.s3-website-us-east-1.amazonaws.com
+            CORS_ORIGIN: https://d26wj8f64aoc6n.cloudfront.net
         networks:
             - mi-red-proyecto
 
