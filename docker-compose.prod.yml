@@ -10,7 +10,7 @@ services:
         # Solo el backend puede acceder a MongoDB
         # a traves de la red interna de Docker.
         volumes:
-            - mongo-data:/data/db # Persistencia de datos
+            - datos-mongo:/data/db # Persistencia de datos
         environment:
             MONGO_INITDB_ROOT_USERNAME: admin
             MONGO_INITDB_ROOT_PASSWORD: secreto
