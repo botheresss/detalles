@@ -36,16 +36,25 @@ app.use('/api/productos', productoRoutes);
 const userRoutes = require('./routes/user.routes.js');
 app.use('/api/usuarios', userRoutes);
 
-async function start() {
-    try {
-        await mongoose.connect(mongoURI);
-        console.log('conectado a MongoDB');
-        app.listen(PORT, () => console.log(`API lista en http://localhost:${PORT}`));
-    } catch (err) {
-        console.error('Error conectando a MongoDB:', err.message);
+async function start(retries = 10, delay = 3000) {
+    for (let i = 1; i <= retries; i++) {
+        try {
+            await mongoose.connect(mongoURI);
+            console.log('Conectado a MongoDB');
+            app.listen(PORT, () => console.log(`API lista en http://localhost:${PORT}`));
+            return;
+        } catch (err) {
+            console.error(`Intento ${i}/${retries} - Error conectando a MongoDB: ${err.message}`);
+            if (i < retries) {
+                console.log(`Reintentando en ${delay / 1000}s...`);
+                await new Promise(res => setTimeout(res, delay));
+                delay = Math.min(delay * 1.5, 30000); // backoff hasta 30s máximo
+            } else {
+                console.error('No se pudo conectar a MongoDB. Saliendo.');
+                process.exit(1);
+            }
+        }
     }
 }
-
-
 
 start();
