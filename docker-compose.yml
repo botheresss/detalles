@@ -19,17 +19,10 @@ services:
       - "3000:3000"
     depends_on:
       - mongo-db
+    env_file:
+      - ./backend/.env
     environment:
       - NODE_ENV=development
-
-  # SERVICIO 3: Frontend (Web)
-  frontend:
-    build: ./detallesFrontAngular
-    container_name: frontend
-    ports:
-      - "4200:4200"
-    depends_on:
-      - backend
 
 volumes:
   mongo-data:
